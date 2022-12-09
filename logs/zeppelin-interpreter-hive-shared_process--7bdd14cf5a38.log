@@ -1,0 +1,2 @@
+2022-12-08 20:53:45,545 INFO  org.apache.hive.jdbc.Utils                                   [] - Supplied authorities: hive-server:10000
+2022-12-08 20:53:45,546 INFO  org.apache.hive.jdbc.Utils                                   [] - Resolved authority: hive-server:10000
