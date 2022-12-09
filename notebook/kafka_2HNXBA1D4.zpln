@@ -1,0 +1,142 @@
+{
+  "paragraphs": [
+    {
+      "text": "import datetime\nimport tweepy\nfrom textblob import TextBlob\nfrom kafka import KafkaProducer\nfrom json import dumps\n \nimport pandas as pd\nfrom datetime import date\n\n \nCONSUMER_KEY \u003d \"knEDQJk2AIwVkeAXRGDocGhon\"\nCONSUMER_SECRET \u003d \"tnoCESMJvNXiEmvvSgajugw7fxGilo9YiQ8agbxJLOd727uJXi\"\nACCESS_TOKEN \u003d \"1547498191779774464-lqh6oSk1r99oWurZdmP8P2kPAtZuIV\"\nACCESS_TOKEN_SECRET \u003d \"oru0PpI4NCysH7mRBTdX4KIHgobqd8CEMjxnqE9ET3Fx3\"\ndef json_serial(obj):\n    \"\"\"JSON serializer for objects not serializable by default json code\"\"\"\n\n    if isinstance(obj, (datetime, datetime.date)):\n        return obj.isoformat()\n    raise TypeError(\"Type %s not serializable\" % type(obj))\nauth \u003d tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)\nauth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)\nproducer \u003d KafkaProducer(bootstrap_servers\u003d[\u0027192.168.1.191:9092\u0027],value_serializer\u003dlambda K:dumps(K,default\u003djson_serial).encode(\u0027utf-8\u0027))\ncolumns \u003d [\u0027PublishedDate\u0027, \u0027User\u0027,\u0027Sentence\u0027]\ndata \u003d []\napi \u003d tweepy.API(auth)\ncursor \u003d tweepy.Cursor(api.search_tweets,q\u003d\"Tesla\",tweet_mode\u003d\u0027extended\u0027).items(50)\nfor tweet in cursor:\n   # producer.send(\u0027testTopic\u0027,tweet.full_text)\n   print(tweet.user.screen_name)\n   producer.send(\u0027testTopic\u0027,[tweet.full_text,tweet.user.screen_name])\n   data.append([tweet.created_at, tweet.user.screen_name,tweet.full_text])\ndf \u003d pd.DataFrame(data, columns\u003dcolumns)\nprint(df)\ntoday \u003d date.today()\nd1 \u003d today.strftime(\"%d-%m-%Y\")\nfilename \u003d \"tweet2\"+d1+\u0027.parquet.gzip\u0027\ndf.to_parquet(filename)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 20:26:15.638",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "DoubleC67804081\nstablesina\nnews_uon\nlucky1chartape\ngalxctv\nsoojin_irene\ngalxctv\nendme_raw\nracingredchief4\nOmarBoutit\nGDevisch\njsiegmund\nDoubleC67804081\nUandUStepchild\ninvisibleleslie\nAmigosaying\ndictionaryhill\nCourantAlter\nS3XY12071638\nIdgafwyt3\ngreasystreets\nxWitchLover\nZxcxz_xyz\nTheLioncom\nSextonBlack\nmnypgo\nwhoiskpd\nDJ3505\nConorAKAFrank\nnutza_sohot\ntesla_now\nAllDickdUp\nbrettxcx\ngezatomasz\nkwame_cucci\nruautowize\nExcessTony\nQuantofOne\nGhostRolo_SZN\nairbagmoments\nCasinoCapital\nJustCallHerKii\nhyecom\nraphaelsrose\nLaberynthium13\nmartinshrg\nSixDotGil\nPaul_Reinhardt\nGMalengret\nifiwasperfect\n               PublishedDate             User  \\\n0  2022-12-09 19:51:37+00:00  DoubleC67804081   \n1  2022-12-09 19:51:37+00:00       stablesina   \n2  2022-12-09 19:51:37+00:00         news_uon   \n3  2022-12-09 19:51:36+00:00   lucky1chartape   \n4  2022-12-09 19:51:36+00:00          galxctv   \n5  2022-12-09 19:51:35+00:00     soojin_irene   \n6  2022-12-09 19:51:34+00:00          galxctv   \n7  2022-12-09 19:51:33+00:00        endme_raw   \n8  2022-12-09 19:51:33+00:00  racingredchief4   \n9  2022-12-09 19:51:33+00:00       OmarBoutit   \n10 2022-12-09 19:51:31+00:00         GDevisch   \n11 2022-12-09 19:51:31+00:00        jsiegmund   \n12 2022-12-09 19:51:30+00:00  DoubleC67804081   \n13 2022-12-09 19:51:28+00:00   UandUStepchild   \n14 2022-12-09 19:51:27+00:00  invisibleleslie   \n15 2022-12-09 19:51:27+00:00      Amigosaying   \n16 2022-12-09 19:51:26+00:00   dictionaryhill   \n17 2022-12-09 19:51:25+00:00     CourantAlter   \n18 2022-12-09 19:51:25+00:00     S3XY12071638   \n19 2022-12-09 19:51:24+00:00        Idgafwyt3   \n20 2022-12-09 19:51:23+00:00    greasystreets   \n21 2022-12-09 19:51:23+00:00      xWitchLover   \n22 2022-12-09 19:51:23+00:00        Zxcxz_xyz   \n23 2022-12-09 19:51:21+00:00       TheLioncom   \n24 2022-12-09 19:51:21+00:00      SextonBlack   \n25 2022-12-09 19:51:20+00:00           mnypgo   \n26 2022-12-09 19:51:18+00:00         whoiskpd   \n27 2022-12-09 19:51:18+00:00           DJ3505   \n28 2022-12-09 19:51:16+00:00    ConorAKAFrank   \n29 2022-12-09 19:51:16+00:00      nutza_sohot   \n30 2022-12-09 19:51:16+00:00        tesla_now   \n31 2022-12-09 19:51:16+00:00       AllDickdUp   \n32 2022-12-09 19:51:14+00:00         brettxcx   \n33 2022-12-09 19:51:14+00:00       gezatomasz   \n34 2022-12-09 19:51:13+00:00      kwame_cucci   \n35 2022-12-09 19:51:12+00:00       ruautowize   \n36 2022-12-09 19:51:11+00:00       ExcessTony   \n37 2022-12-09 19:51:11+00:00       QuantofOne   \n38 2022-12-09 19:51:11+00:00    GhostRolo_SZN   \n39 2022-12-09 19:51:10+00:00    airbagmoments   \n40 2022-12-09 19:51:10+00:00    CasinoCapital   \n41 2022-12-09 19:51:09+00:00   JustCallHerKii   \n42 2022-12-09 19:51:09+00:00           hyecom   \n43 2022-12-09 19:51:08+00:00     raphaelsrose   \n44 2022-12-09 19:51:06+00:00   Laberynthium13   \n45 2022-12-09 19:51:05+00:00       martinshrg   \n46 2022-12-09 19:51:04+00:00        SixDotGil   \n47 2022-12-09 19:51:04+00:00   Paul_Reinhardt   \n48 2022-12-09 19:51:03+00:00       GMalengret   \n49 2022-12-09 19:51:02+00:00    ifiwasperfect   \n\n                                             Sentence  \n0   @anglinjan1 @teardowntitan @Toyota @Tesla @elo...  \n1   RT @Forbes: After losing the top spot on Forbe...  \n2   - The Grunheide council has given Tesla the gr...  \n3   RT @luckychartape: Right on time.  Did some te...  \n4   @KlenderJoey @Tesla thanks mate. lets pump it ...  \n5   RT @nokidshive: the owner ran in the house and...  \n6   @KlenderJoey @Tesla Genius Idea https://t.co/D...  \n7   RT @RealYouTubeKids: “Yo where the fuck is my ...  \n8   RT @elonmusk: @iliketeslas I continue to overs...  \n9   RT @MelacomeB: @zosegal @lawmaster @fintechfra...  \n10  RT @Tesla: 40 Megapack units balance the grid ...  \n11  Midden in wat lijkt op een woonwijk, in ieder ...  \n12  RT @anglinjan1: @teardowntitan @Toyota @Tesla ...  \n13  RT @JoshuaPHilll: Only a Tesla could be destro...  \n14  RT @JoshuaPHilll: Only a Tesla could be destro...  \n15  RT @elonmusk: @iliketeslas I continue to overs...  \n16  @ZimaXBT @unusual_whales Nope. Tesla has very ...  \n17            @Tesla @elonmusk Not far from my home 😅  \n18  RT @Tesla: 40 Megapack units balance the grid ...  \n19  RT @Tesla: 40 Megapack units balance the grid ...  \n20  RT @JoshuaPHilll: Only a Tesla could be destro...  \n21  @elonmusk @Tesla, is there a way to modify the...  \n22  The Bolt EUV’s (\u0026amp; Many Other Cars’) Secret...  \n23  $CVNA huge accumulating stage seems like someo...  \n24  RT @JoshuaPHilll: Only a Tesla could be destro...  \n25  RT @docMJP: The year is 2005. Donald Trump is ...  \n26  RT @JoshuaPHilll: Only a Tesla could be destro...  \n27  @elonmusk feature idea:\\nUse Tesla vision to d...  \n28  @BostonGlobe @elonmusk if you keep this perman...  \n29  RT @lc28467239: ✅ กดรีทวิต  กดติดตาม หัวใจ ❤️\\...  \n30  RT @Lucivan53844354: @maiconsulivanbr É por Co...  \n31  @windfreighter @Tesla This truck does absolute...  \n32  RT @JoshuaPHilll: Only a Tesla could be destro...  \n33  RT @JoshuaPHilll: Only a Tesla could be destro...  \n34  RT @Tesla: 40 Megapack units balance the grid ...  \n35  RT @Tesla: Delivered our first Tesla Semis las...  \n36  @EggerFelix @Tesla Actually, let me educate yo...  \n37  @AlphiQuant @nsquaredmacro @elonmusk @PayPal @...  \n38  RT @JoshuaPHilll: Only a Tesla could be destro...  \n39  RT @MaxieMoosie: This right here, but this who...  \n40  Damn, being a Tesla cheerleader sure must have...  \n41  RT @JoshuaPHilll: Only a Tesla could be destro...  \n42  ¿Ha mostrado Tesla un Cybertruck más pequeño p...  \n43  That’s what y’all get for paying 100k for them...  \n44  RT @Tesla: 40 Megapack units balance the grid ...  \n45  RT @Tesla: 40 Megapack units balance the grid ...  \n46  @Forbes @elonmusk hey Richie rich let\u0027s celebr...  \n47  @TeslaOwnersUK @Tesla @elonmusk @FotowatioRV M...  \n48  @Tesla @elonmusk Very Nicccce.... How Much ? -...  \n49  Autonomous Vehicle Tackles Roundabout Challeng...  \n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670614325420_489874930",
+      "id": "paragraph_1670614325420_489874930",
+      "dateCreated": "2022-12-09 19:32:05.420",
+      "dateStarted": "2022-12-09 19:51:39.017",
+      "dateFinished": "2022-12-09 19:51:42.773",
+      "status": "FINISHED"
+    },
+    {
+      "text": "import pandas as pd\nfrom kafka import KafkaProducer\nfrom json import dumps\nfrom pynytimes import NYTAPI\nfrom datetime import date, datetime, timedelta\n\n\ndef json_serial(obj):\n    \"\"\"JSON serializer for objects not serializable by default json code\"\"\"\n\n    if isinstance(obj, (datetime, date)):\n        return obj.isoformat()\n    raise TypeError(\"Type %s not serializable\" % type(obj))\n\n\n# Constants\n\nCONSUMER_KEY \u003d \"Z7s48ugCojGhc1ARbQuYZl1Rz9Zukuuc\"\nCONSUMER_SECRET \u003d \"tnoCESMJvNXiEmvvSgajugw7fxGilo9YiQ8agbxJLOd727uJXi\"\nSEARCH_TERM \u003d \"Tesla\"\nTOPIC \u003d \"news\"\n\n# Creating the producer\n\n\nproducer \u003d KafkaProducer(bootstrap_servers\u003d[\n    \u0027192.168.1.191:9092\u0027], value_serializer\u003dlambda K: dumps(K).encode(\u0027utf-8\u0027))\n\nwith NYTAPI(CONSUMER_KEY, parse_dates\u003dTrue) as nyt:\n\n    articles \u003d nyt.article_search(\n        query\u003dSEARCH_TERM,\n        results\u003d100,\n        dates\u003d{\n            \"begin\": datetime.now() - timedelta(days\u003d1),\n            \"end\": datetime.now()\n        }\n    )\n    print(len(articles))\n    serializable_viewed \u003d dumps(articles, default\u003djson_serial)\n\n    columns \u003d [\u0027Headline\u0027, \u0027Sentence\u0027,\n               \u0027PublishedDate\u0027]\n    data \u003d []\n\n    producer.send(topic\u003dTOPIC, value\u003dserializable_viewed)\n\n    for index, item in enumerate(articles):\n        # producer.send(\u0027testTopic\u0027,tweet.full_text)\n        \n        data.append([item[\u0027headline\u0027][\"main\"], item[\u0027snippet\u0027],\n                         item[\u0027pub_date\u0027]])\n\n        #if (index \u003d\u003d 1):\n            # print(dumps(item, default\u003djson_serial, sort_keys\u003dTrue, indent\u003d4))\n            #data.append([item[\u0027headline\u0027][\"main\"], item[\u0027snippet\u0027],\n                         #item[\u0027pub_date\u0027]])\n    # print(articles)\n\n        # data.append([tweet.created_at, tweet.user.screen_name])\n\n    df \u003d pd.DataFrame(data, columns\u003dcolumns)\n\n    print(datetime.now().strftime(\"%Y-%m-%d\"))\n\n    df.to_parquet(\u0027articles-\u0027+datetime.now().strftime(\"%Y-%m-%d\") +\n                  \u0027.parquet.gzip\u0027, compression\u003d\u0027gzip\u0027)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 20:57:14.676",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "1\n2022-12-09\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670614342268_1652179403",
+      "id": "paragraph_1670614342268_1652179403",
+      "dateCreated": "2022-12-09 19:32:22.268",
+      "dateStarted": "2022-12-09 20:57:14.694",
+      "dateFinished": "2022-12-09 20:57:16.211",
+      "status": "FINISHED"
+    },
+    {
+      "text": "\nimport time\nfrom kafka import KafkaProducer\nimport yfinance as yf\nfrom datetime import date\nimport json\n\ncurrent_date \u003d date.today()\ncompany \u003d \u0027Tesla\u0027\nproducer \u003d KafkaProducer(bootstrap_servers\u003d[\u0027192.168.1.191:9092\u0027])\ntopic_name \u003d \u0027testTopic2\u0027\n\n\ndata \u003d yf.download(\"TSLA\", period\u003d\u00271d\u0027,interval\u003d\u00272m\u0027)\n  #data \u003d yf.download(tickers\u003dcompany ,start\u003dcurrent_date,interval\u003d\u00272m\u0027)\ndata \u003d data.reset_index(drop\u003dFalse)\ndata[\u0027Datetime\u0027] \u003d data[\u0027Datetime\u0027].dt.strftime(\u0027%Y-%m-%d %H:%M:%S\u0027)\nmy_dict \u003d data.iloc[-1].to_dict()\nmsg \u003d json.dumps(my_dict)\nproducer.send(topic_name, key\u003db\u0027Tesla Stock Update\u0027, value\u003dmsg.encode())\nprint(f\"Producing to {topic_name}\")\nprint(f\"msg {msg.encode()}\")\nproducer.flush()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 21:29:18.798",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670617579631_362804377",
+      "id": "paragraph_1670617579631_362804377",
+      "dateCreated": "2022-12-09 20:26:19.632",
+      "dateStarted": "2022-12-09 21:29:18.814",
+      "dateFinished": "2022-12-09 21:28:12.112",
+      "status": "RUNNING"
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670620164161_904634093",
+      "id": "paragraph_1670620164161_904634093",
+      "dateCreated": "2022-12-09 21:09:24.161",
+      "status": "READY"
+    }
+  ],
+  "name": "kafka",
+  "id": "2HNXBA1D4",
+  "defaultInterpreterGroup": "python",
+  "version": "0.9.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

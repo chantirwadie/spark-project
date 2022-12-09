@@ -1,0 +1,2595 @@
+{
+  "paragraphs": [
+    {
+      "text": "Getting data",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 18:46:38.357",
+      "progress": 0,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 14.0,
+        "results": {},
+        "enabled": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670535502905_450553098",
+      "id": "paragraph_1670535502905_450553098",
+      "dateCreated": "2022-12-08 21:38:22.905",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\nimport time\nfrom pyspark import SparkContext,SparkConf\nfrom pyspark.sql import SparkSession\n\nappName\u003d \"hive_pyspark\"\n\nconf\u003dSparkConf()\nsc\u003dSparkContext.getOrCreate(conf\u003dconf)\nspark \u003d SparkSession(sc).builder.appName(appName).config(\"hive.metastore.uris\",\"thrift://hive-metastore:9083\").enableHiveSupport().getOrCreate()\n\nr1\u003d[]\nr2\u003d[]\nr3\u003d[]\nr4\u003d[]\nr5\u003d[]\nr6\u003d[]\n\ndf\u003dspark.read.csv(\"data.csv\",header\u003d\u0027true\u0027)\ndf.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 18:58:33.741",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+---------+\n|            Sentence|Sentiment|\n+--------------------+---------+\n|The GeoSolutions ...| positive|\n|$ESI on lows, dow...| negative|\n|For the last quar...| positive|\n|According to the ...|  neutral|\n|The Swedish buyou...|  neutral|\n|$SPY wouldn\u0027t be ...| positive|\n|Shell\u0027s $70 Billi...| negative|\n|SSH COMMUNICATION...| negative|\n|Kone \u0027s net sales...| positive|\n|The Stockmann dep...|  neutral|\n|Circulation reven...| positive|\n|$SAP Q1 disappoin...| negative|\n|The subdivision m...| positive|\n|Viking Line has c...|  neutral|\n|Ahlstrom Corporat...|  neutral|\n|$FB gone green on...| positive|\n|$MSFT SQL Server ...| positive|\n|According to L+ñn...|  neutral|\n|The company \u0027s sh...|  neutral|\n|Elcoteq SE is lis...|  neutral|\n+--------------------+---------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d3"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d4"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670535177544_36597872",
+      "id": "paragraph_1670535177544_36597872",
+      "dateCreated": "2022-12-08 21:32:57.544",
+      "dateStarted": "2022-12-09 18:58:33.763",
+      "dateFinished": "2022-12-09 18:58:34.300",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\ndf \u003d df.dropna()\ndf.count()",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 18:58:37.938",
+      "progress": 50,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "5842"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d5"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670536094638_577955044",
+      "id": "paragraph_1670536094638_577955044",
+      "dateCreated": "2022-12-08 21:48:14.639",
+      "dateStarted": "2022-12-09 18:58:37.962",
+      "dateFinished": "2022-12-09 18:58:38.542",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n(train_set, val_set, test_set) \u003d df.randomSplit([0.98, 0.01, 0.01], seed \u003d 2000)",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 18:58:41.082",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670536219973_1393334436",
+      "id": "paragraph_1670536219973_1393334436",
+      "dateCreated": "2022-12-08 21:50:19.973",
+      "dateStarted": "2022-12-09 18:58:41.106",
+      "dateFinished": "2022-12-09 18:58:41.335",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.ml.feature import HashingTF, IDF, Tokenizer\nfrom pyspark.ml.feature import StringIndexer\nfrom pyspark.ml import Pipeline\n\ntokenizer \u003d Tokenizer(inputCol\u003d\"Sentence\", outputCol\u003d\"words\")\nhashtf \u003d HashingTF(numFeatures\u003d2**16, inputCol\u003d\"words\", outputCol\u003d\u0027tf\u0027)\nidf \u003d IDF(inputCol\u003d\u0027tf\u0027, outputCol\u003d\"features\", minDocFreq\u003d5) #minDocFreq: remove sparse terms\nlabel_stringIdx \u003d StringIndexer(inputCol \u003d \"Sentiment\", outputCol \u003d \"label\")\npipeline \u003d Pipeline(stages\u003d[tokenizer, hashtf, idf, label_stringIdx])\n\npipelineFit \u003d pipeline.fit(train_set)\ntrain_df \u003d pipelineFit.transform(train_set)\nval_df \u003d pipelineFit.transform(val_set)\ntrain_df.show()\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 18:58:44.656",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+--------------------+--------------------+--------------------+--------------------+-----+\n|            Sentence|           Sentiment|               words|                  tf|            features|label|\n+--------------------+--------------------+--------------------+--------------------+--------------------+-----+\n|\"$SINA even thoug...| the damage is do...|[\"$sina, even, th...|(65536,[731,9019,...|(65536,[731,9019,...|  3.0|\n|\"$SPY Less than 0...|            negative|[\"$spy, less, tha...|(65536,[4009,5377...|(65536,[4009,5377...|  2.0|\n|\"$pcln back over ...|            positive|[\"$pcln, back, ov...|(65536,[1198,6889...|(65536,[1198,6889...|  1.0|\n|\"2nd raise this y...|            positive|[\"2nd, raise, thi...|(65536,[1156,8911...|(65536,[1156,8911...|  1.0|\n|\"@BrooklynBandit:...|            positive|[\"@brooklynbandit...|(65536,[11605,158...|(65536,[11605,158...|  1.0|\n|\"FBR Capital reit...|            positive|[\"fbr, capital, r...|(65536,[9639,1007...|(65536,[9639,1007...|  1.0|\n|\"Micron Technolog...|            negative|[\"micron, technol...|(65536,[9506,1032...|(65536,[9506,1032...|  2.0|\n|#Apple breaks maj...|            negative|[#apple, breaks, ...|(65536,[8436,1160...|(65536,[8436,1160...|  2.0|\n|#Apple up almost ...|            positive|[#apple, up, almo...|(65536,[3283,8125...|(65536,[3283,8125...|  1.0|\n|#Fintech provider...|            positive|[#fintech, provid...|(65536,[5964,1282...|(65536,[5964,1282...|  1.0|\n|#FusionIQ NEW Pos...|            positive|[#fusioniq, new, ...|(65536,[12822,255...|(65536,[12822,255...|  1.0|\n|#LongPos $TSLA 25...|            positive|[#longpos, $tsla,...|(65536,[12,1667,3...|(65536,[12,1667,3...|  1.0|\n|#NDX component Te...|            negative|[#ndx, component,...|(65536,[6946,1387...|(65536,[6946,1387...|  2.0|\n|#Tesla Model S de...|            positive|[#tesla, model, s...|(65536,[1920,3834...|(65536,[1920,3834...|  1.0|\n|#Tesla: Model X R...|            negative|[#tesla:, model, ...|(65536,[3171,6946...|(65536,[3171,6946...|  2.0|\n|$AAPL  downgrade ...|            positive|[$aapl, , downgra...|(65536,[15889,308...|(65536,[15889,308...|  1.0|\n|$AAPL $131 rally ...|            positive|[$aapl, $131, ral...|(65536,[11084,363...|(65536,[11084,363...|  1.0|\n|$AAPL - Has broke...|            positive|[$aapl, -, has, b...|(65536,[5559,7687...|(65536,[5559,7687...|  1.0|\n|$AAPL 50DMA turne...|            positive|[$aapl, 50dma, tu...|(65536,[1203,9129...|(65536,[1203,9129...|  1.0|\n|$AAPL 620 resista...|             neutral|[$aapl, 620, resi...|(65536,[14625,363...|(65536,[14625,363...|  0.0|\n+--------------------+--------------------+--------------------+--------------------+--------------------+-----+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d6"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d7"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d8"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670536678847_421094571",
+      "id": "paragraph_1670536678847_421094571",
+      "dateCreated": "2022-12-08 21:57:58.847",
+      "dateStarted": "2022-12-09 18:58:44.680",
+      "dateFinished": "2022-12-09 18:58:47.130",
+      "status": "FINISHED"
+    },
+    {
+      "text": "\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 19:02:48.672",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m\n\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)\n\u001b[0;32m\u003cipython-input-64-f400a769d299\u003e\u001b[0m in \u001b[0;36m\u003cmodule\u003e\u001b[0;34m\u001b[0m\n\u001b[1;32m      6\u001b[0m \u001b[0mmetrics\u001b[0m \u001b[0;34m\u003d\u001b[0m \u001b[0mMulticlassMetrics\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mpredictedAndLabels\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      7\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----\u003e 8\u001b[0;31m \u001b[0mpredictedAndLabels\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshow\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\n\u001b[0;31mAttributeError\u001b[0m: \u0027PipelinedRDD\u0027 object has no attribute \u0027show\u0027"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670612274015_723759334",
+      "id": "paragraph_1670612274015_723759334",
+      "dateCreated": "2022-12-09 18:57:54.017",
+      "dateStarted": "2022-12-09 19:02:27.712",
+      "dateFinished": "2022-12-09 19:02:27.987",
+      "status": "ERROR"
+    },
+    {
+      "text": "%pyspark\nval_df.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 23:53:27.951",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+---------+--------------------+--------------------+--------------------+-----+\n|            Sentence|Sentiment|               words|                  tf|            features|label|\n+--------------------+---------+--------------------+--------------------+--------------------+-----+\n|$SMH got a sell s...| negative|[$smh, got, a, se...|(65536,[750,1251,...|(65536,[750,1251,...|  2.0|\n|( ADP News ) - Fe...|  neutral|[(, adp, news, ),...|(65536,[732,1536,...|(65536,[732,1536,...|  0.0|\n|( ADPnews ) - Feb...|  neutral|[(, adpnews, ), -...|(65536,[732,1251,...|(65536,[732,1251,...|  0.0|\n|@louiebeene vwap ...| positive|[@louiebeene, vwa...|(65536,[8870,9639...|(65536,[8870,9639...|  1.0|\n|A filter is used ...|  neutral|[a, filter, is, u...|(65536,[1536,2071...|(65536,[1536,2071...|  0.0|\n|A new Kveyt light...| positive|[a, new, kveyt, l...|(65536,[1536,8436...|(65536,[1536,8436...|  1.0|\n|According to the ...|  neutral|[according, to, t...|(65536,[589,1536,...|(65536,[589,1536,...|  0.0|\n|Aldata said that ...|  neutral|[aldata, said, th...|(65536,[1536,2408...|(65536,[1536,2408...|  0.0|\n|As capacity was c...|  neutral|[as, capacity, wa...|(65536,[546,1536,...|(65536,[546,1536,...|  0.0|\n|At 10.33 am , Huh...| negative|[at, 10.33, am, ,...|(65536,[1536,3764...|(65536,[1536,3764...|  2.0|\n|BasWare Order Mat...|  neutral|[basware, order, ...|(65536,[1536,2182...|(65536,[1536,2182...|  0.0|\n|COMPTEL CORPORATI...|  neutral|[comptel, corpora...|(65536,[1536,1766...|(65536,[1536,1766...|  0.0|\n|Dutch publisher D...|  neutral|[dutch, publisher...|(65536,[1536,4362...|(65536,[1536,4362...|  0.0|\n|EUR928 ,000 in Q1...| positive|[eur928, ,000, in...|(65536,[732,1364,...|(65536,[732,1364,...|  1.0|\n|EuroChem CFO Andr...| positive|[eurochem, cfo, a...|(65536,[211,1536,...|(65536,[211,1536,...|  1.0|\n|Finland-based int...|  neutral|[finland-based, i...|(65536,[261,732,1...|(65536,[261,732,1...|  0.0|\n|Finnish forest ma...| negative|[finnish, forest,...|(65536,[1536,1634...|(65536,[1536,1634...|  2.0|\n|Following the tra...| positive|[following, the, ...|(65536,[1536,7658...|(65536,[1536,7658...|  1.0|\n|He said he has be...|  neutral|[he, said, he, ha...|(65536,[1536,2888...|(65536,[1536,2888...|  0.0|\n|Image data produc...|  neutral|[image, data, pro...|(65536,[312,1134,...|(65536,[312,1134,...|  0.0|\n+--------------------+---------+--------------------+--------------------+--------------------+-----+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1145"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670543594370_1842176905",
+      "id": "paragraph_1670543594370_1842176905",
+      "dateCreated": "2022-12-08 23:53:14.370",
+      "dateStarted": "2022-12-08 23:53:27.966",
+      "dateFinished": "2022-12-08 23:53:28.290",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.ml.classification import LogisticRegression\nlr \u003d LogisticRegression(maxIter\u003d100)\nlrModel \u003d lr.fit(train_df)\npredictions \u003d lrModel.transform(val_df)\nfrom pyspark.ml.evaluation import BinaryClassificationEvaluator\nevaluator \u003d BinaryClassificationEvaluator(rawPredictionCol\u003d\"rawPrediction\")\nevaluator.evaluate(predictions)",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 19:05:53.827",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "0.6448412698412699"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d235"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d236"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d237"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d238"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d239"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d240"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d241"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d242"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d243"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d244"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d245"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d246"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d247"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d248"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d249"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d250"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d251"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d252"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d253"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d254"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d255"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d256"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d257"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d258"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d259"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d260"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d261"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d262"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d263"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d264"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d265"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d266"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d267"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d268"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d269"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d270"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d271"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d272"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d273"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d274"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d275"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d276"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d277"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d278"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d279"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d280"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d281"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d282"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d283"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d284"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d285"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d286"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d287"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d288"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d289"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d290"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d291"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d292"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d293"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d294"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d295"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d296"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d297"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d298"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d299"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d300"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d301"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d302"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d303"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d304"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d305"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d306"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d307"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d308"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d309"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d310"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d311"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d312"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d313"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d314"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d315"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d316"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d317"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d318"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d319"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d320"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d321"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d322"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d323"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d324"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d325"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d326"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d327"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d328"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d329"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d330"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d331"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d332"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d333"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d334"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d335"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d336"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d337"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d338"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d339"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d340"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d341"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d342"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d343"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d344"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d345"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670536795417_808099534",
+      "id": "paragraph_1670536795417_808099534",
+      "dateCreated": "2022-12-08 21:59:55.417",
+      "dateStarted": "2022-12-09 19:05:53.843",
+      "dateFinished": "2022-12-09 19:06:01.761",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\naccuracy \u003d predictions.filter(predictions.label \u003d\u003d predictions.prediction).count() / float(val_set.count())\naccuracy",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 23:06:22.269",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "0.5333333333333333"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d781"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d782"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670540423399_130028500",
+      "id": "paragraph_1670540423399_130028500",
+      "dateCreated": "2022-12-08 23:00:23.403",
+      "dateStarted": "2022-12-08 23:06:22.288",
+      "dateFinished": "2022-12-08 23:06:23.184",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 23:21:05.429",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670541665428_1724489411",
+      "id": "paragraph_1670541665428_1724489411",
+      "dateCreated": "2022-12-08 23:21:05.429",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\n%%time\nfrom pyspark.ml.feature import CountVectorizer\n\ntokenizer \u003d Tokenizer(inputCol\u003d\"Sentence\", outputCol\u003d\"words\")\ncv \u003d CountVectorizer(vocabSize\u003d2**16, inputCol\u003d\"words\", outputCol\u003d\u0027cv\u0027)\nidf \u003d IDF(inputCol\u003d\u0027cv\u0027, outputCol\u003d\"features\", minDocFreq\u003d5) #minDocFreq: remove sparse terms\nlabel_stringIdx \u003d StringIndexer(inputCol \u003d \"Sentiment\", outputCol \u003d \"label\")\nlr \u003d LogisticRegression(maxIter\u003d100)\npipeline \u003d Pipeline(stages\u003d[tokenizer, cv, idf, label_stringIdx, lr])\n\npipelineFit \u003d pipeline.fit(train_set)\npredictions \u003d pipelineFit.transform(val_set)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 19:09:05.957",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "CPU times: user 73.5 ms, sys: 16.7 ms, total: 90.2 ms\nWall time: 5.71 s\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d346"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d347"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d348"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d349"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d350"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d351"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d352"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d353"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d354"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d355"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d356"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d357"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d358"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d359"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d360"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d361"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d362"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d363"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d364"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d365"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d366"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d367"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d368"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d369"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d370"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d371"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d372"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d373"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d374"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d375"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d376"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d377"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d378"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d379"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d380"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d381"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d382"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d383"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d384"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d385"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d386"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d387"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d388"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d389"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d390"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d391"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d392"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d393"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d394"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d395"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d396"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d397"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d398"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d399"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d400"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d401"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d402"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d403"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d404"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d405"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d406"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d407"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d408"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d409"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d410"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d411"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d412"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d413"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d414"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d415"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d416"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d417"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d418"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d419"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d420"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d421"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d422"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d423"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d424"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d425"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d426"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d427"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d428"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d429"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d430"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d431"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d432"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d433"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d434"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d435"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d436"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d437"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d438"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d439"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d440"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d441"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d442"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d443"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d444"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d445"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d446"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d447"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d448"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d449"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d450"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d451"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d452"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d453"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d454"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d455"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d456"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d457"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d458"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670540782284_1487514001",
+      "id": "paragraph_1670540782284_1487514001",
+      "dateCreated": "2022-12-08 23:06:22.284",
+      "dateStarted": "2022-12-09 19:09:05.972",
+      "dateFinished": "2022-12-09 19:09:11.877",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\npredictions.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 19:09:56.959",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+---------+--------------------+--------------------+--------------------+-----+--------------------+--------------------+----------+\n|            Sentence|Sentiment|               words|                  cv|            features|label|       rawPrediction|         probability|prediction|\n+--------------------+---------+--------------------+--------------------+--------------------+-----+--------------------+--------------------+----------+\n|$SMH got a sell s...| negative|[$smh, got, a, se...|(13970,[5,6,7,15,...|(13970,[5,6,7,15,...|  2.0|[20.8607239842510...|[0.38919120791312...|       2.0|\n|( ADP News ) - Fe...|  neutral|[(, adp, news, ),...|(13970,[1,2,5,8,9...|(13970,[1,2,5,8,9...|  0.0|[16.3648994813102...|[4.80503391324916...|       2.0|\n|( ADPnews ) - Feb...|  neutral|[(, adpnews, ), -...|(13970,[0,2,3,4,5...|(13970,[0,2,3,4,5...|  0.0|[15.2813744139209...|[3.46782158513417...|       2.0|\n|@louiebeene vwap ...| positive|[@louiebeene, vwa...|(13970,[0,3,7,12,...|(13970,[0,3,7,12,...|  1.0|[16.2973278751670...|[0.99963512894685...|       0.0|\n|A filter is used ...|  neutral|[a, filter, is, u...|(13970,[0,1,3,5,7...|(13970,[0,1,3,5,7...|  0.0|[17.2227892038855...|[0.99999999857004...|       0.0|\n|A new Kveyt light...| positive|[a, new, kveyt, l...|(13970,[0,1,3,4,5...|(13970,[0,1,3,4,5...|  1.0|[43.5007657634779...|[1.0,6.1519365270...|       0.0|\n|According to the ...|  neutral|[according, to, t...|(13970,[0,1,2,3,4...|(13970,[0,1,2,3,4...|  0.0|[-2.8519966004094...|[2.09871851361125...|       2.0|\n|Aldata said that ...|  neutral|[aldata, said, th...|(13970,[0,1,3,5,6...|(13970,[0,1,3,5,6...|  0.0|[24.9418882016753...|[0.99999999999997...|       0.0|\n|As capacity was c...|  neutral|[as, capacity, wa...|(13970,[0,1,2,19,...|(13970,[0,1,2,19,...|  0.0|[0.46029246300520...|[1.59099377861436...|       2.0|\n|At 10.33 am , Huh...| negative|[at, 10.33, am, ,...|(13970,[0,1,2,6,9...|(13970,[0,1,2,6,9...|  2.0|[21.0314219827404...|[0.99999999956411...|       0.0|\n|BasWare Order Mat...|  neutral|[basware, order, ...|(13970,[1,20,134,...|(13970,[1,20,134,...|  0.0|[8.90152206515548...|[4.18299582904845...|       1.0|\n|COMPTEL CORPORATI...|  neutral|[comptel, corpora...|(13970,[1,5,6,40,...|(13970,[1,5,6,40,...|  0.0|[40.7394002862778...|[1.0,2.9594940876...|       0.0|\n|Dutch publisher D...|  neutral|[dutch, publisher...|(13970,[1,4,5,7,1...|(13970,[1,4,5,7,1...|  0.0|[20.6480170492638...|[0.99996259600688...|       0.0|\n|EUR928 ,000 in Q1...| positive|[eur928, ,000, in...|(13970,[0,1,3,4,5...|(13970,[0,1,3,4,5...|  1.0|[2.73136105456818...|[2.47451194800715...|       1.0|\n|EuroChem CFO Andr...| positive|[eurochem, cfo, a...|(13970,[0,1,4,6,8...|(13970,[0,1,4,6,8...|  1.0|[56.7322632137120...|[1.0,3.5876902338...|       0.0|\n|Finland-based int...|  neutral|[finland-based, i...|(13970,[0,1,3,8,1...|(13970,[0,1,3,8,1...|  0.0|[28.4249137735574...|[0.99999999999999...|       0.0|\n|Finnish forest ma...| negative|[finnish, forest,...|(13970,[1,7,21,24...|(13970,[1,7,21,24...|  2.0|[12.9135186837980...|[0.99999913238348...|       0.0|\n|Following the tra...| positive|[following, the, ...|(13970,[0,1,2,6,8...|(13970,[0,1,2,6,8...|  1.0|[17.5694577514352...|[0.99988587653149...|       0.0|\n|He said he has be...|  neutral|[he, said, he, ha...|(13970,[0,1,5,7,1...|(13970,[0,1,5,7,1...|  0.0|[7.12417631839575...|[0.00220390261830...|       2.0|\n|Image data produc...|  neutral|[image, data, pro...|(13970,[0,1,5,7,8...|(13970,[0,1,5,7,8...|  0.0|[24.6947771221030...|[0.99999999999965...|       0.0|\n+--------------------+---------+--------------------+--------------------+--------------------+-----+--------------------+--------------------+----------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d461"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670612978377_924052028",
+      "id": "paragraph_1670612978377_924052028",
+      "dateCreated": "2022-12-09 19:09:38.378",
+      "dateStarted": "2022-12-09 19:09:56.975",
+      "dateFinished": "2022-12-09 19:09:57.352",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\naccuracy \u003d predictions.filter(predictions.label \u003d\u003d predictions.prediction).count() / float(val_set.count())\naccuracy\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 19:09:19.348",
+      "progress": 33,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "0.4666666666666667"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d459"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d460"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670540842832_324862682",
+      "id": "paragraph_1670540842832_324862682",
+      "dateCreated": "2022-12-08 23:07:22.832",
+      "dateStarted": "2022-12-09 19:09:19.364",
+      "dateFinished": "2022-12-09 19:09:19.840",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\nroc_auc \u003d evaluator.evaluate(predictions)\nroc_auc",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 23:23:43.750",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "0.628968253968254"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1022"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1023"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1024"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670541757573_2096047558",
+      "id": "paragraph_1670541757573_2096047558",
+      "dateCreated": "2022-12-08 23:22:37.573",
+      "dateStarted": "2022-12-08 23:23:43.764",
+      "dateFinished": "2022-12-08 23:23:44.138",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\nfrom pyspark.ml.feature import NGram, VectorAssembler\nfrom pyspark.ml.feature import ChiSqSelector\n\ndef build_trigrams(inputCol\u003d[\"Sentence\",\"Sentiment\"], n\u003d3):\n    tokenizer \u003d [Tokenizer(inputCol\u003d\"Sentence\", outputCol\u003d\"words\")]\n    ngrams \u003d [\n        NGram(n\u003di, inputCol\u003d\"words\", outputCol\u003d\"{0}_grams\".format(i))\n        for i in range(1, n + 1)\n    ]\n\n    cv \u003d [\n        CountVectorizer(vocabSize\u003d2**14,inputCol\u003d\"{0}_grams\".format(i),\n            outputCol\u003d\"{0}_tf\".format(i))\n        for i in range(1, n + 1)\n    ]\n    idf \u003d [IDF(inputCol\u003d\"{0}_tf\".format(i), outputCol\u003d\"{0}_tfidf\".format(i), minDocFreq\u003d5) for i in range(1, n + 1)]\n\n    assembler \u003d [VectorAssembler(\n        inputCols\u003d[\"{0}_tfidf\".format(i) for i in range(1, n + 1)],\n        outputCol\u003d\"rawFeatures\"\n    )]\n    label_stringIdx \u003d [StringIndexer(inputCol \u003d \"Sentiment\", outputCol \u003d \"label\")]\n    selector \u003d [ChiSqSelector(numTopFeatures\u003d2**14,featuresCol\u003d\u0027rawFeatures\u0027, outputCol\u003d\"features\")]\n    lr \u003d [LogisticRegression(maxIter\u003d100)]\n    return Pipeline(stages\u003dtokenizer + ngrams + cv + idf+ assembler + label_stringIdx+selector+lr)",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 23:41:40.599",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670542838216_101146689",
+      "id": "paragraph_1670542838216_101146689",
+      "dateCreated": "2022-12-08 23:40:38.216",
+      "dateStarted": "2022-12-08 23:41:40.619",
+      "dateFinished": "2022-12-08 23:41:40.839",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\ndef build_ngrams_wocs(inputCol\u003d[\"text\",\"target\"], n\u003d3):\n    tokenizer \u003d [Tokenizer(inputCol\u003d\"Sentence\", outputCol\u003d\"words\")]\n    ngrams \u003d [\n        NGram(n\u003di, inputCol\u003d\"words\", outputCol\u003d\"{0}_grams\".format(i))\n        for i in range(1, n + 1)\n    ]\n\n    cv \u003d [\n        CountVectorizer(vocabSize\u003d5460,inputCol\u003d\"{0}_grams\".format(i),\n            outputCol\u003d\"{0}_tf\".format(i))\n        for i in range(1, n + 1)\n    ]\n    idf \u003d [IDF(inputCol\u003d\"{0}_tf\".format(i), outputCol\u003d\"{0}_tfidf\".format(i), minDocFreq\u003d5) for i in range(1, n + 1)]\n\n    assembler \u003d [VectorAssembler(\n        inputCols\u003d[\"{0}_tfidf\".format(i) for i in range(1, n + 1)],\n        outputCol\u003d\"features\"\n    )]\n    label_stringIdx \u003d [StringIndexer(inputCol \u003d \"Sentiment\", outputCol \u003d \"label\")]\n    lr \u003d [LogisticRegression(maxIter\u003d100)]\n    return Pipeline(stages\u003dtokenizer + ngrams + cv + idf+ assembler + label_stringIdx+lr)",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 23:38:52.893",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670541823763_1213387323",
+      "id": "paragraph_1670541823763_1213387323",
+      "dateCreated": "2022-12-08 23:23:43.763",
+      "dateStarted": "2022-12-08 23:38:52.912",
+      "dateFinished": "2022-12-08 23:38:53.135",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n%%time\ntrigramwocs_pipelineFit \u003d build_ngrams_wocs().fit(train_set)\npredictions_wocs \u003d trigramwocs_pipelineFit.transform(val_set)\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 23:41:44.106",
+      "progress": 100,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "CPU times: user 211 ms, sys: 39.6 ms, total: 251 ms\nWall time: 17.3 s\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1025"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1026"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1027"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1028"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1029"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1030"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1031"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1032"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1033"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1034"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1035"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1036"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1037"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1038"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1039"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1040"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1041"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1042"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1043"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1044"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1045"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1046"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1047"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1048"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1049"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1050"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1051"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1052"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1053"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1054"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1055"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1056"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1057"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1058"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1059"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1060"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1061"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1062"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1063"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1064"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1065"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1066"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1067"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1068"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1069"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1070"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1071"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1072"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1073"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1074"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1075"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1076"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1077"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1078"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1079"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1080"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1081"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1082"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1083"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1084"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1085"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1086"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1087"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1088"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1089"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1090"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1091"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1092"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1093"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1094"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1095"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1096"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1097"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1098"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1099"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1100"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1101"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1102"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1103"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1104"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1105"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1106"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1107"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1108"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1109"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1110"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1111"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1112"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1113"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1114"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1115"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1116"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1117"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1118"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1119"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1120"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1121"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1122"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1123"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1124"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1125"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1126"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1127"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1128"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1129"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1130"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1131"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1132"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1133"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1134"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1135"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1136"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1137"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1138"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1139"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670542732908_1138022878",
+      "id": "paragraph_1670542732908_1138022878",
+      "dateCreated": "2022-12-08 23:38:52.908",
+      "dateStarted": "2022-12-08 23:41:44.122",
+      "dateFinished": "2022-12-08 23:42:01.589",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\naccuracy_wocs \u003d predictions_wocs.filter(predictions_wocs.label \u003d\u003d predictions_wocs.prediction).count() / float(val_set.count())\naccuracy_wocs",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 23:42:51.820",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "0.4888888888888889"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1140"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1141"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670542766280_1497549767",
+      "id": "paragraph_1670542766280_1497549767",
+      "dateCreated": "2022-12-08 23:39:26.280",
+      "dateStarted": "2022-12-08 23:42:51.834",
+      "dateFinished": "2022-12-08 23:42:52.507",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 21:31:48.096",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670621508096_1030495032",
+      "id": "paragraph_1670621508096_1030495032",
+      "dateCreated": "2022-12-09 21:31:48.096",
+      "status": "READY"
+    },
+    {
+      "text": "%pyspark\nroc_auc_wocs \u003d evaluator.evaluate(predictions_wocs)# print accuracy, roc_auc\nroc_auc_wocs",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-08 23:42:53.547",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "0.6527777777777777"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1142"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1143"
+            },
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1144"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670542925518_278473945",
+      "id": "paragraph_1670542925518_278473945",
+      "dateCreated": "2022-12-08 23:42:05.518",
+      "dateStarted": "2022-12-08 23:42:53.566",
+      "dateFinished": "2022-12-08 23:42:54.043",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nappName\u003d \"hive_pyspark\"\n\nconf\u003dSparkConf()\nsc\u003dSparkContext.getOrCreate(conf\u003dconf)\nspark \u003d SparkSession(sc).builder.appName(appName).config(\"hive.metastore.uris\",\"thrift://hive-metastore:9083\").enableHiveSupport().getOrCreate()\n\nr1\u003d[]\nr2\u003d[]\nr3\u003d[]\nr4\u003d[]\nr5\u003d[]\nr6\u003d[]\n\ndatafile\u003dspark.read.parquet(\"tweet09-12-2022.parquet.gzip\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 19:57:10.161",
+      "progress": 100,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d471"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670542973562_460410379",
+      "id": "paragraph_1670542973562_460410379",
+      "dateCreated": "2022-12-08 23:42:53.562",
+      "dateStarted": "2022-12-09 19:57:10.182",
+      "dateFinished": "2022-12-09 19:57:10.661",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\ndatafile.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 19:57:12.417",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------------+---------------+--------------------+\n|      PublishedDate|           User|            Sentence|\n+-------------------+---------------+--------------------+\n|2022-12-09 19:20:08|   HrudeTheDude|RT @JoshuaPHilll:...|\n|2022-12-09 19:20:08| zdyxkihtc16083|Tesla Sales of Ch...|\n|2022-12-09 19:20:07|  jeungjoo_choi|RT @JoshuaPHilll:...|\n|2022-12-09 19:20:07|         Jo67He|RT @TOrynski: I a...|\n|2022-12-09 19:20:06|  MitchellAbbys|RT @MitchellAbbys...|\n|2022-12-09 19:20:05| VictorVulvaXYZ|No one should hav...|\n|2022-12-09 19:20:04|   colincalvert|@DirtyTesLa @bran...|\n|2022-12-09 19:20:01|       gobuckgo|@breepalm Stop it...|\n|2022-12-09 19:19:59|       Volted_Z|RT @MitchellAbbys...|\n|2022-12-09 19:19:57|   theotherdlee|@cbdUdE2 @Tesla V...|\n|2022-12-09 19:19:54|       tesla_25|@nonoinvestidor A...|\n|2022-12-09 19:19:53|       raebethh|RT @JoshuaPHilll:...|\n|2022-12-09 19:19:52|  ShoreProgress|RT @WSBChairman: ...|\n|2022-12-09 19:19:51|   mlbnflnbaepl|RT @JoshuaPHilll:...|\n|2022-12-09 19:19:50|ElliottForecast|$TSLA The chart o...|\n|2022-12-09 19:19:46| the_man_2words|RT @Tesla: 40 Meg...|\n|2022-12-09 19:19:46|  KoloeridiArts|RT @stuart9748738...|\n|2022-12-09 19:19:45|  MitchellAbbys|@Pablo_cro @Volte...|\n|2022-12-09 19:19:45|    soupyapollo|deserved for owni...|\n|2022-12-09 19:19:42|   Brinnaaatttt|RT @JoshuaPHilll:...|\n+-------------------+---------------+--------------------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d472"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670613235536_108103088",
+      "id": "paragraph_1670613235536_108103088",
+      "dateCreated": "2022-12-09 19:13:55.537",
+      "dateStarted": "2022-12-09 19:57:12.440",
+      "dateFinished": "2022-12-09 19:57:12.825",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\npredictions2 \u003d pipelineFit.transform(datafile)",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 20:04:00.165",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670613300843_1708828539",
+      "id": "paragraph_1670613300843_1708828539",
+      "dateCreated": "2022-12-09 19:15:00.843",
+      "dateStarted": "2022-12-09 20:04:00.187",
+      "dateFinished": "2022-12-09 20:04:00.514",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\npredictions2.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 20:04:01.784",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------------+---------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\n|      PublishedDate|           User|            Sentence|               words|                  cv|            features|       rawPrediction|         probability|prediction|\n+-------------------+---------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\n|2022-12-09 19:20:08|   HrudeTheDude|RT @JoshuaPHilll:...|[rt, @joshuaphill...|(13970,[7,18,23,4...|(13970,[7,18,23,4...|[2.26021881762979...|[9.00658546097256...|       2.0|\n|2022-12-09 19:20:08| zdyxkihtc16083|Tesla Sales of Ch...|[tesla, sales, of...|(13970,[3,5,12,19...|(13970,[3,5,12,19...|[-16.615619950253...|[3.37145741347703...|       2.0|\n|2022-12-09 19:20:07|  jeungjoo_choi|RT @JoshuaPHilll:...|[rt, @joshuaphill...|(13970,[7,18,23,4...|(13970,[7,18,23,4...|[2.26021881762979...|[9.00658546097256...|       2.0|\n|2022-12-09 19:20:07|         Jo67He|RT @TOrynski: I a...|[rt, @torynski:, ...|(13970,[0,5,7,34,...|(13970,[0,5,7,34,...|[-4.7349405229014...|[8.14563999865374...|       1.0|\n|2022-12-09 19:20:06|  MitchellAbbys|RT @MitchellAbbys...|[rt, @mitchellabb...| (13970,[862],[1.0])|(13970,[862],[5.8...|[3.69342606794636...|[0.79687798454006...|       0.0|\n|2022-12-09 19:20:05| VictorVulvaXYZ|No one should hav...|[no, one, should,...|(13970,[7,64,102,...|(13970,[7,64,102,...|[1.34840531226636...|[0.14753162124515...|       1.0|\n|2022-12-09 19:20:04|   colincalvert|@DirtyTesLa @bran...|[@dirtytesla, @br...|(13970,[4,33,35,1...|(13970,[4,33,35,1...|[17.1574525205011...|[0.99999999963952...|       0.0|\n|2022-12-09 19:20:01|       gobuckgo|@breepalm Stop it...|[@breepalm, stop,...|(13970,[0,3,7,15,...|(13970,[0,3,7,15,...|[-12.540384003352...|[1.40086260014487...|       1.0|\n|2022-12-09 19:19:59|       Volted_Z|RT @MitchellAbbys...|[rt, @mitchellabb...| (13970,[862],[1.0])|(13970,[862],[5.8...|[3.69342606794636...|[0.79687798454006...|       0.0|\n|2022-12-09 19:19:57|   theotherdlee|@cbdUdE2 @Tesla V...|[@cbdude2, @tesla...|(13970,[4,12,413,...|(13970,[4,12,413,...|[7.58973573369412...|[0.99808895895820...|       0.0|\n|2022-12-09 19:19:54|       tesla_25|@nonoinvestidor A...|[@nonoinvestidor,...|(13970,[7,783,249...|(13970,[7,783,249...|[4.87014415715922...|[0.89935469153322...|       0.0|\n|2022-12-09 19:19:53|       raebethh|RT @JoshuaPHilll:...|[rt, @joshuaphill...|(13970,[7,18,23,4...|(13970,[7,18,23,4...|[2.26021881762979...|[9.00658546097256...|       2.0|\n|2022-12-09 19:19:52|  ShoreProgress|RT @WSBChairman: ...|[rt, @wsbchairman...|(13970,[7,8,12,35...|(13970,[7,8,12,35...|[-12.720427156166...|[8.99693699580330...|       1.0|\n|2022-12-09 19:19:51|   mlbnflnbaepl|RT @JoshuaPHilll:...|[rt, @joshuaphill...|(13970,[7,18,23,4...|(13970,[7,18,23,4...|[2.26021881762979...|[9.00658546097256...|       2.0|\n|2022-12-09 19:19:50|ElliottForecast|$TSLA The chart o...|[$tsla, the, char...|(13970,[0,3,36,40...|(13970,[0,3,36,40...|[-28.272402052640...|[3.04255046418291...|       2.0|\n|2022-12-09 19:19:46| the_man_2words|RT @Tesla: 40 Meg...|[rt, @tesla:, 40,...|(13970,[0,4,33,21...|(13970,[0,4,33,21...|[14.5002747001237...|[0.99999994976403...|       0.0|\n|2022-12-09 19:19:46|  KoloeridiArts|RT @stuart9748738...|[rt, @stuart97487...|(13970,[0,12,18,1...|(13970,[0,12,18,1...|[26.7193472955051...|[0.99999999999997...|       0.0|\n|2022-12-09 19:19:45|  MitchellAbbys|@Pablo_cro @Volte...|[@pablo_cro, @vol...|(13970,[0,12,72,5...|(13970,[0,12,72,5...|[1.51983284710352...|[0.24520496803484...|       2.0|\n|2022-12-09 19:19:45|    soupyapollo|deserved for owni...|[deserved, for, o...|(13970,[7,8,1002,...|(13970,[7,8,1002,...|[-8.8096042686559...|[1.52539247882771...|       1.0|\n|2022-12-09 19:19:42|   Brinnaaatttt|RT @JoshuaPHilll:...|[rt, @joshuaphill...|(13970,[7,18,23,4...|(13970,[7,18,23,4...|[2.26021881762979...|[9.00658546097256...|       2.0|\n+-------------------+---------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d474"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670613853957_1349126364",
+      "id": "paragraph_1670613853957_1349126364",
+      "dateCreated": "2022-12-09 19:24:13.958",
+      "dateStarted": "2022-12-09 20:04:01.805",
+      "dateFinished": "2022-12-09 20:04:02.294",
+      "status": "FINISHED"
+    },
+    {
+      "text": "sql(\"show tables\").show",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 20:06:53.136",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------+-------------+-----------+\n|database|    tableName|isTemporary|\n+--------+-------------+-----------+\n|        |my_temp_table|       true|\n+--------+-------------+-----------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670614119333_1367821479",
+      "id": "paragraph_1670614119333_1367821479",
+      "dateCreated": "2022-12-09 19:28:39.333",
+      "dateStarted": "2022-12-09 20:06:53.159",
+      "dateFinished": "2022-12-09 20:06:53.508",
+      "status": "FINISHED"
+    },
+    {
+      "text": "sql(\"select * from my_temp_table\").show                   ",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 20:07:56.363",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------------+---------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\n|      PublishedDate|           User|            Sentence|               words|                  cv|            features|       rawPrediction|         probability|prediction|\n+-------------------+---------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\n|2022-12-09 19:20:08|   HrudeTheDude|RT @JoshuaPHilll:...|[rt, @joshuaphill...|(13970,[7,18,23,4...|(13970,[7,18,23,4...|[2.26021881762979...|[9.00658546097256...|       2.0|\n|2022-12-09 19:20:08| zdyxkihtc16083|Tesla Sales of Ch...|[tesla, sales, of...|(13970,[3,5,12,19...|(13970,[3,5,12,19...|[-16.615619950253...|[3.37145741347703...|       2.0|\n|2022-12-09 19:20:07|  jeungjoo_choi|RT @JoshuaPHilll:...|[rt, @joshuaphill...|(13970,[7,18,23,4...|(13970,[7,18,23,4...|[2.26021881762979...|[9.00658546097256...|       2.0|\n|2022-12-09 19:20:07|         Jo67He|RT @TOrynski: I a...|[rt, @torynski:, ...|(13970,[0,5,7,34,...|(13970,[0,5,7,34,...|[-4.7349405229014...|[8.14563999865374...|       1.0|\n|2022-12-09 19:20:06|  MitchellAbbys|RT @MitchellAbbys...|[rt, @mitchellabb...| (13970,[862],[1.0])|(13970,[862],[5.8...|[3.69342606794636...|[0.79687798454006...|       0.0|\n|2022-12-09 19:20:05| VictorVulvaXYZ|No one should hav...|[no, one, should,...|(13970,[7,64,102,...|(13970,[7,64,102,...|[1.34840531226636...|[0.14753162124515...|       1.0|\n|2022-12-09 19:20:04|   colincalvert|@DirtyTesLa @bran...|[@dirtytesla, @br...|(13970,[4,33,35,1...|(13970,[4,33,35,1...|[17.1574525205011...|[0.99999999963952...|       0.0|\n|2022-12-09 19:20:01|       gobuckgo|@breepalm Stop it...|[@breepalm, stop,...|(13970,[0,3,7,15,...|(13970,[0,3,7,15,...|[-12.540384003352...|[1.40086260014487...|       1.0|\n|2022-12-09 19:19:59|       Volted_Z|RT @MitchellAbbys...|[rt, @mitchellabb...| (13970,[862],[1.0])|(13970,[862],[5.8...|[3.69342606794636...|[0.79687798454006...|       0.0|\n|2022-12-09 19:19:57|   theotherdlee|@cbdUdE2 @Tesla V...|[@cbdude2, @tesla...|(13970,[4,12,413,...|(13970,[4,12,413,...|[7.58973573369412...|[0.99808895895820...|       0.0|\n|2022-12-09 19:19:54|       tesla_25|@nonoinvestidor A...|[@nonoinvestidor,...|(13970,[7,783,249...|(13970,[7,783,249...|[4.87014415715922...|[0.89935469153322...|       0.0|\n|2022-12-09 19:19:53|       raebethh|RT @JoshuaPHilll:...|[rt, @joshuaphill...|(13970,[7,18,23,4...|(13970,[7,18,23,4...|[2.26021881762979...|[9.00658546097256...|       2.0|\n|2022-12-09 19:19:52|  ShoreProgress|RT @WSBChairman: ...|[rt, @wsbchairman...|(13970,[7,8,12,35...|(13970,[7,8,12,35...|[-12.720427156166...|[8.99693699580330...|       1.0|\n|2022-12-09 19:19:51|   mlbnflnbaepl|RT @JoshuaPHilll:...|[rt, @joshuaphill...|(13970,[7,18,23,4...|(13970,[7,18,23,4...|[2.26021881762979...|[9.00658546097256...|       2.0|\n|2022-12-09 19:19:50|ElliottForecast|$TSLA The chart o...|[$tsla, the, char...|(13970,[0,3,36,40...|(13970,[0,3,36,40...|[-28.272402052640...|[3.04255046418291...|       2.0|\n|2022-12-09 19:19:46| the_man_2words|RT @Tesla: 40 Meg...|[rt, @tesla:, 40,...|(13970,[0,4,33,21...|(13970,[0,4,33,21...|[14.5002747001237...|[0.99999994976403...|       0.0|\n|2022-12-09 19:19:46|  KoloeridiArts|RT @stuart9748738...|[rt, @stuart97487...|(13970,[0,12,18,1...|(13970,[0,12,18,1...|[26.7193472955051...|[0.99999999999997...|       0.0|\n|2022-12-09 19:19:45|  MitchellAbbys|@Pablo_cro @Volte...|[@pablo_cro, @vol...|(13970,[0,12,72,5...|(13970,[0,12,72,5...|[1.51983284710352...|[0.24520496803484...|       2.0|\n|2022-12-09 19:19:45|    soupyapollo|deserved for owni...|[deserved, for, o...|(13970,[7,8,1002,...|(13970,[7,8,1002,...|[-8.8096042686559...|[1.52539247882771...|       1.0|\n|2022-12-09 19:19:42|   Brinnaaatttt|RT @JoshuaPHilll:...|[rt, @joshuaphill...|(13970,[7,18,23,4...|(13970,[7,18,23,4...|[2.26021881762979...|[9.00658546097256...|       2.0|\n+-------------------+---------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\nonly showing top 20 rows\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d475"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670615898217_1598987011",
+      "id": "paragraph_1670615898217_1598987011",
+      "dateCreated": "2022-12-09 19:58:18.218",
+      "dateStarted": "2022-12-09 20:07:56.383",
+      "dateFinished": "2022-12-09 20:07:56.864",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\n\nappName\u003d \"hive_pyspark\"\n\nconf\u003dSparkConf()\nsc\u003dSparkContext.getOrCreate(conf\u003dconf)\nspark \u003d SparkSession(sc).builder.appName(appName).config(\"hive.metastore.uris\",\"thrift://hive-metastore:9083\").enableHiveSupport().getOrCreate()\n\nr1\u003d[]\nr2\u003d[]\nr3\u003d[]\nr4\u003d[]\nr5\u003d[]\nr6\u003d[]\n\narticles\u003dspark.read.parquet(\"articles-2022-12-09.parquet.gzip\")",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 20:55:53.868",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d478"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670619203554_1372388806",
+      "id": "paragraph_1670619203554_1372388806",
+      "dateCreated": "2022-12-09 20:53:23.554",
+      "dateStarted": "2022-12-09 20:55:53.893",
+      "dateFinished": "2022-12-09 20:55:54.218",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\narticles.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 20:55:55.377",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+--------------------+-------------------+\n|            Headline|            Sentence|      PublishedDate|\n+--------------------+--------------------+-------------------+\n|Workers at E.V. B...|The result, at a ...|2022-12-09 13:42:50|\n+--------------------+--------------------+-------------------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d479"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670619297448_1589259185",
+      "id": "paragraph_1670619297448_1589259185",
+      "dateCreated": "2022-12-09 20:54:57.448",
+      "dateStarted": "2022-12-09 20:55:55.402",
+      "dateFinished": "2022-12-09 20:55:55.781",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\nArticlesPredictions \u003d pipelineFit.transform(articles)",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 20:59:08.815",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670619384267_1802023730",
+      "id": "paragraph_1670619384267_1802023730",
+      "dateCreated": "2022-12-09 20:56:24.267",
+      "dateStarted": "2022-12-09 20:59:08.837",
+      "dateFinished": "2022-12-09 20:59:09.162",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\nArticlesPredictions.show()",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 20:59:45.969",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+--------------------+-------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\n|            Headline|            Sentence|      PublishedDate|               words|                  cv|            features|       rawPrediction|         probability|prediction|\n+--------------------+--------------------+-------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\n|Workers at E.V. B...|The result, at a ...|2022-12-09 13:42:50|[the, result,, at...|(13970,[0,4,6,7,8...|(13970,[0,4,6,7,8...|[-9.3917337195327...|[1.29094517627489...|       1.0|\n+--------------------+--------------------+-------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d480"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670619562031_1736942359",
+      "id": "paragraph_1670619562031_1736942359",
+      "dateCreated": "2022-12-09 20:59:22.031",
+      "dateStarted": "2022-12-09 20:59:45.990",
+      "dateFinished": "2022-12-09 20:59:46.568",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\nArticlesPredictions.select(\"rawPrediction\").show(1)",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 21:05:08.817",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+--------------------+\n|       rawPrediction|\n+--------------------+\n|[-9.3917337195327...|\n+--------------------+\n\n\u001b[0;31m---------------------------------------------------------------------------\u001b[0m\n\u001b[0;31mAttributeError\u001b[0m                            Traceback (most recent call last)\n\u001b[0;32m\u003cipython-input-232-af7b17005932\u003e\u001b[0m in \u001b[0;36m\u003cmodule\u003e\u001b[0;34m\u001b[0m\n\u001b[0;32m----\u003e 1\u001b[0;31m \u001b[0mArticlesPredictions\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mselect\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"rawPrediction\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mshow\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;36m1\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mvalue\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\n\u001b[0;31mAttributeError\u001b[0m: \u0027NoneType\u0027 object has no attribute \u0027value\u0027"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d484"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670619843539_1702459205",
+      "id": "paragraph_1670619843539_1702459205",
+      "dateCreated": "2022-12-09 21:04:03.539",
+      "dateStarted": "2022-12-09 21:05:00.365",
+      "dateFinished": "2022-12-09 21:05:00.796",
+      "status": "ERROR"
+    },
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 21:09:20.378",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670620153855_153619346",
+      "id": "paragraph_1670620153855_153619346",
+      "dateCreated": "2022-12-09 21:09:13.856",
+      "status": "READY"
+    },
+    {
+      "text": "sql(\"create table my_table as select * from my_temp_table\");",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 20:25:02.482",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "org.apache.spark.sql.AnalysisException: Hive support is required to CREATE Hive TABLE (AS SELECT);;\n\u0027CreateTable `my_table`, org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe, ErrorIfExists\n+- Project [PublishedDate#960, User#961, Sentence#962, words#1081, cv#1087, features#1093, rawPrediction#1106, probability#1114, prediction#1123]\n   +- SubqueryAlias `my_temp_table`\n      +- Project [PublishedDate#960, User#961, Sentence#962, words#1081, cv#1087, features#1093, rawPrediction#1106, probability#1114, UDF(rawPrediction#1106) AS prediction#1123]\n         +- Project [PublishedDate#960, User#961, Sentence#962, words#1081, cv#1087, features#1093, rawPrediction#1106, UDF(rawPrediction#1106) AS probability#1114]\n            +- Project [PublishedDate#960, User#961, Sentence#962, words#1081, cv#1087, features#1093, UDF(features#1093) AS rawPrediction#1106]\n               +- Project [PublishedDate#960, User#961, Sentence#962, words#1081, cv#1087, UDF(cv#1087) AS features#1093]\n                  +- Project [PublishedDate#960, User#961, Sentence#962, words#1081, UDF(words#1081) AS cv#1087]\n                     +- Project [PublishedDate#960, User#961, Sentence#962, UDF(Sentence#962) AS words#1081]\n                        +- Relation[PublishedDate#960,User#961,Sentence#962] parquet\n\n  at org.apache.spark.sql.execution.datasources.HiveOnlyCheck$$anonfun$apply$12.apply(rules.scala:392)\n  at org.apache.spark.sql.execution.datasources.HiveOnlyCheck$$anonfun$apply$12.apply(rules.scala:390)\n  at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:116)\n  at org.apache.spark.sql.execution.datasources.HiveOnlyCheck$.apply(rules.scala:390)\n  at org.apache.spark.sql.execution.datasources.HiveOnlyCheck$.apply(rules.scala:388)\n  at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$2.apply(CheckAnalysis.scala:429)\n  at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$2.apply(CheckAnalysis.scala:429)\n  at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)\n  at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)\n  at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$class.checkAnalysis(CheckAnalysis.scala:429)\n  at org.apache.spark.sql.catalyst.analysis.Analyzer.checkAnalysis(Analyzer.scala:95)\n  at org.apache.spark.sql.catalyst.analysis.Analyzer$$anonfun$executeAndCheck$1.apply(Analyzer.scala:108)\n  at org.apache.spark.sql.catalyst.analysis.Analyzer$$anonfun$executeAndCheck$1.apply(Analyzer.scala:105)\n  at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.markInAnalyzer(AnalysisHelper.scala:201)\n  at org.apache.spark.sql.catalyst.analysis.Analyzer.executeAndCheck(Analyzer.scala:105)\n  at org.apache.spark.sql.execution.QueryExecution.analyzed$lzycompute(QueryExecution.scala:58)\n  at org.apache.spark.sql.execution.QueryExecution.analyzed(QueryExecution.scala:56)\n  at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:48)\n  at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:78)\n  at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:642)\n  ... 45 elided\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670616468924_1504474721",
+      "id": "paragraph_1670616468924_1504474721",
+      "dateCreated": "2022-12-09 20:07:48.924",
+      "dateStarted": "2022-12-09 20:24:40.779",
+      "dateFinished": "2022-12-09 20:24:41.347",
+      "status": "ERROR"
+    },
+    {
+      "user": "anonymous",
+      "progress": 0,
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670617480777_926472492",
+      "id": "paragraph_1670617480777_926472492",
+      "dateCreated": "2022-12-09 20:24:40.777",
+      "status": "READY"
+    }
+  ],
+  "name": "training model sentiment analysis",
+  "id": "2HPKM1GCY",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.0",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {
+    "isRunning": false
+  }
+}
