@@ -2247,7 +2247,7 @@
     {
       "text": "%pyspark\n\nappName\u003d \"hive_pyspark\"\n\nconf\u003dSparkConf()\nsc\u003dSparkContext.getOrCreate(conf\u003dconf)\nspark \u003d SparkSession(sc).builder.appName(appName).config(\"hive.metastore.uris\",\"thrift://hive-metastore:9083\").enableHiveSupport().getOrCreate()\n\nr1\u003d[]\nr2\u003d[]\nr3\u003d[]\nr4\u003d[]\nr5\u003d[]\nr6\u003d[]\n\narticles\u003dspark.read.parquet(\"articles-2022-12-09.parquet.gzip\")",
       "user": "anonymous",
-      "dateUpdated": "2022-12-09 20:55:53.868",
+      "dateUpdated": "2022-12-10 12:54:27.541",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2279,7 +2279,7 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d478"
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d3"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2289,14 +2289,14 @@
       "jobName": "paragraph_1670619203554_1372388806",
       "id": "paragraph_1670619203554_1372388806",
       "dateCreated": "2022-12-09 20:53:23.554",
-      "dateStarted": "2022-12-09 20:55:53.893",
-      "dateFinished": "2022-12-09 20:55:54.218",
+      "dateStarted": "2022-12-10 12:54:27.561",
+      "dateFinished": "2022-12-10 12:54:27.893",
       "status": "FINISHED"
     },
     {
       "text": "%pyspark\narticles.show()",
       "user": "anonymous",
-      "dateUpdated": "2022-12-09 20:55:55.377",
+      "dateUpdated": "2022-12-10 12:54:30.354",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2333,7 +2333,7 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d479"
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d4"
             }
           ],
           "interpreterSettingId": "spark"
@@ -2343,14 +2343,14 @@
       "jobName": "paragraph_1670619297448_1589259185",
       "id": "paragraph_1670619297448_1589259185",
       "dateCreated": "2022-12-09 20:54:57.448",
-      "dateStarted": "2022-12-09 20:55:55.402",
-      "dateFinished": "2022-12-09 20:55:55.781",
+      "dateStarted": "2022-12-10 12:54:30.369",
+      "dateFinished": "2022-12-10 12:54:30.745",
       "status": "FINISHED"
     },
     {
       "text": "%pyspark\nArticlesPredictions \u003d pipelineFit.transform(articles)",
       "user": "anonymous",
-      "dateUpdated": "2022-12-09 20:59:08.815",
+      "dateUpdated": "2022-12-10 12:54:32.583",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -2370,8 +2370,13 @@
         "forms": {}
       },
       "results": {
-        "code": "SUCCESS",
-        "msg": []
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m\n\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)\n\u001b[0;32m\u003cipython-input-32-864b86fa6430\u003e\u001b[0m in \u001b[0;36m\u003cmodule\u003e\u001b[0;34m\u001b[0m\n\u001b[0;32m----\u003e 1\u001b[0;31m \u001b[0mArticlesPredictions\u001b[0m \u001b[0;34m\u003d\u001b[0m \u001b[0mpipelineFit\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mtransform\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0marticles\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\n\u001b[0;31mNameError\u001b[0m: name \u0027pipelineFit\u0027 is not defined"
+          }
+        ]
       },
       "apps": [],
       "runtimeInfos": {},
@@ -2379,9 +2384,9 @@
       "jobName": "paragraph_1670619384267_1802023730",
       "id": "paragraph_1670619384267_1802023730",
       "dateCreated": "2022-12-09 20:56:24.267",
-      "dateStarted": "2022-12-09 20:59:08.837",
-      "dateFinished": "2022-12-09 20:59:09.162",
-      "status": "FINISHED"
+      "dateStarted": "2022-12-10 12:54:32.599",
+      "dateFinished": "2022-12-10 12:54:32.827",
+      "status": "ERROR"
     },
     {
       "text": "%pyspark\nArticlesPredictions.show()",
@@ -2492,19 +2497,19 @@
       "status": "ERROR"
     },
     {
-      "text": "",
+      "text": "%pyspark\n\nappName\u003d \"hive_pyspark\"\n\nconf\u003dSparkConf()\nsc\u003dSparkContext.getOrCreate(conf\u003dconf)\nspark \u003d SparkSession(sc).builder.appName(appName).config(\"hive.metastore.uris\",\"thrift://hive-metastore:9083\").enableHiveSupport().getOrCreate()\n\nr1\u003d[]\nr2\u003d[]\nr3\u003d[]\nr4\u003d[]\nr5\u003d[]\nr6\u003d[]\n\nyahoo\u003dspark.read.parquet(\"yahoo10-12-2022.parquet.gzip\")",
       "user": "anonymous",
-      "dateUpdated": "2022-12-09 21:09:20.378",
+      "dateUpdated": "2022-12-10 12:49:20.431",
       "progress": 0,
       "config": {
         "editorSetting": {
-          "language": "scala",
+          "language": "python",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
         },
         "colWidth": 12.0,
-        "editorMode": "ace/mode/scala",
+        "editorMode": "ace/mode/python",
         "fontSize": 9.0,
         "results": {},
         "enabled": true
@@ -2513,28 +2518,101 @@
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
       "apps": [],
-      "runtimeInfos": {},
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d1"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
       "progressUpdateIntervalMs": 500,
       "jobName": "paragraph_1670620153855_153619346",
       "id": "paragraph_1670620153855_153619346",
       "dateCreated": "2022-12-09 21:09:13.856",
-      "status": "READY"
+      "dateStarted": "2022-12-10 12:49:20.445",
+      "dateFinished": "2022-12-10 12:49:20.823",
+      "status": "FINISHED"
     },
     {
-      "text": "sql(\"create table my_table as select * from my_temp_table\");",
+      "text": "%pyspark\nyahoo.show()",
       "user": "anonymous",
-      "dateUpdated": "2022-12-09 20:25:02.482",
-      "progress": 0,
+      "dateUpdated": "2022-12-10 12:49:22.972",
+      "progress": 100,
       "config": {
         "editorSetting": {
-          "language": "scala",
+          "language": "python",
           "editOnDblClick": false,
           "completionKey": "TAB",
           "completionSupport": true
         },
         "colWidth": 12.0,
-        "editorMode": "ace/mode/scala",
+        "editorMode": "ace/mode/python",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "+-------------------+-----------------+-----------------+-----------------+-----------------+-----------------+------+\n|           Datetime|             Open|             High|              Low|            Close|         AdjClose|Volume|\n+-------------------+-----------------+-----------------+-----------------+-----------------+-----------------+------+\n|2022-12-09 16:00:00|179.0500030517578|179.0500030517578|179.0500030517578|179.0500030517578|179.0500030517578|     0|\n+-------------------+-----------------+-----------------+-----------------+-----------------+-----------------+------+\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://7bdd14cf5a38:4040/jobs/job?id\u003d2"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1670676544669_882778056",
+      "id": "paragraph_1670676544669_882778056",
+      "dateCreated": "2022-12-10 12:49:04.669",
+      "dateStarted": "2022-12-10 12:49:22.987",
+      "dateFinished": "2022-12-10 12:49:24.522",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%pyspark\nimport synapse.ml\n\nfrom synapse.ml.cognitive import *\nfrom notebookutils import mssparkutils\n\n# A general Cognitive Services key for Text Analytics and Computer Vision (or use separate keys that belong to each service)\ncognitive_service_key \u003d mssparkutils.credentials.getSecret(\"ensajj\", \"bdf4a8231e4b4c54990d2c13c28902b1\",\"https://ensajj.cognitiveservices.azure.com/\") \n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-12-09 21:54:30.222",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
         "fontSize": 9.0,
         "results": {},
         "enabled": true
@@ -2548,24 +2626,38 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "org.apache.spark.sql.AnalysisException: Hive support is required to CREATE Hive TABLE (AS SELECT);;\n\u0027CreateTable `my_table`, org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe, ErrorIfExists\n+- Project [PublishedDate#960, User#961, Sentence#962, words#1081, cv#1087, features#1093, rawPrediction#1106, probability#1114, prediction#1123]\n   +- SubqueryAlias `my_temp_table`\n      +- Project [PublishedDate#960, User#961, Sentence#962, words#1081, cv#1087, features#1093, rawPrediction#1106, probability#1114, UDF(rawPrediction#1106) AS prediction#1123]\n         +- Project [PublishedDate#960, User#961, Sentence#962, words#1081, cv#1087, features#1093, rawPrediction#1106, UDF(rawPrediction#1106) AS probability#1114]\n            +- Project [PublishedDate#960, User#961, Sentence#962, words#1081, cv#1087, features#1093, UDF(features#1093) AS rawPrediction#1106]\n               +- Project [PublishedDate#960, User#961, Sentence#962, words#1081, cv#1087, UDF(cv#1087) AS features#1093]\n                  +- Project [PublishedDate#960, User#961, Sentence#962, words#1081, UDF(words#1081) AS cv#1087]\n                     +- Project [PublishedDate#960, User#961, Sentence#962, UDF(Sentence#962) AS words#1081]\n                        +- Relation[PublishedDate#960,User#961,Sentence#962] parquet\n\n  at org.apache.spark.sql.execution.datasources.HiveOnlyCheck$$anonfun$apply$12.apply(rules.scala:392)\n  at org.apache.spark.sql.execution.datasources.HiveOnlyCheck$$anonfun$apply$12.apply(rules.scala:390)\n  at org.apache.spark.sql.catalyst.trees.TreeNode.foreach(TreeNode.scala:116)\n  at org.apache.spark.sql.execution.datasources.HiveOnlyCheck$.apply(rules.scala:390)\n  at org.apache.spark.sql.execution.datasources.HiveOnlyCheck$.apply(rules.scala:388)\n  at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$2.apply(CheckAnalysis.scala:429)\n  at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$$anonfun$checkAnalysis$2.apply(CheckAnalysis.scala:429)\n  at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)\n  at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)\n  at org.apache.spark.sql.catalyst.analysis.CheckAnalysis$class.checkAnalysis(CheckAnalysis.scala:429)\n  at org.apache.spark.sql.catalyst.analysis.Analyzer.checkAnalysis(Analyzer.scala:95)\n  at org.apache.spark.sql.catalyst.analysis.Analyzer$$anonfun$executeAndCheck$1.apply(Analyzer.scala:108)\n  at org.apache.spark.sql.catalyst.analysis.Analyzer$$anonfun$executeAndCheck$1.apply(Analyzer.scala:105)\n  at org.apache.spark.sql.catalyst.plans.logical.AnalysisHelper$.markInAnalyzer(AnalysisHelper.scala:201)\n  at org.apache.spark.sql.catalyst.analysis.Analyzer.executeAndCheck(Analyzer.scala:105)\n  at org.apache.spark.sql.execution.QueryExecution.analyzed$lzycompute(QueryExecution.scala:58)\n  at org.apache.spark.sql.execution.QueryExecution.analyzed(QueryExecution.scala:56)\n  at org.apache.spark.sql.execution.QueryExecution.assertAnalyzed(QueryExecution.scala:48)\n  at org.apache.spark.sql.Dataset$.ofRows(Dataset.scala:78)\n  at org.apache.spark.sql.SparkSession.sql(SparkSession.scala:642)\n  ... 45 elided\n"
+            "data": "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m\n\u001b[0;31mModuleNotFoundError\u001b[0m                       Traceback (most recent call last)\n\u001b[0;32m\u003cipython-input-244-d26ee89ac90e\u003e\u001b[0m in \u001b[0;36m\u003cmodule\u003e\u001b[0;34m\u001b[0m\n\u001b[0;32m----\u003e 1\u001b[0;31m \u001b[0;32mimport\u001b[0m \u001b[0msynapse\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mml\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      2\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0msynapse\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mml\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcognitive\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0;34m*\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0mnotebookutils\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mmssparkutils\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\n\u001b[0;31mModuleNotFoundError\u001b[0m: No module named \u0027synapse\u0027"
           }
         ]
       },
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1670616468924_1504474721",
-      "id": "paragraph_1670616468924_1504474721",
-      "dateCreated": "2022-12-09 20:07:48.924",
-      "dateStarted": "2022-12-09 20:24:40.779",
-      "dateFinished": "2022-12-09 20:24:41.347",
+      "jobName": "paragraph_1670621699981_725856042",
+      "id": "paragraph_1670621699981_725856042",
+      "dateCreated": "2022-12-09 21:34:59.981",
+      "dateStarted": "2022-12-09 21:54:30.246",
+      "dateFinished": "2022-12-09 21:54:30.484",
       "status": "ERROR"
     },
     {
+      "text": "from pyspark.sql.functions import col\n\n# Create a dataframe that\u0027s tied to it\u0027s column names\ndf_sentences \u003d spark.createDataFrame([\n  (\"I am so happy today, its sunny!\", \"en-US\"), \n  (\"this is a dog\", \"en-US\"), \n  (\"I am frustrated by this rush hour traffic!\", \"en-US\") \n], [\"text\", \"language\"])\n\n# Run the Text Analytics service with options\nsentiment \u003d (TextSentiment()\n    .setTextCol(\"text\")\n    .setLocation(\"eastasia\") # Set the location of your cognitive service\n    .setSubscriptionKey(cognitive_service_key)\n    .setOutputCol(\"sentiment\")\n    .setErrorCol(\"error\")\n    .setLanguageCol(\"language\"))\n\n# Show the results of your text query in a table format\n\ndisplay(sentiment.transform(df_sentences).select(\"text\", col(\"sentiment\")[0].getItem(\"sentiment\").alias(\"sentiment\")))",
       "user": "anonymous",
+      "dateUpdated": "2022-12-09 21:35:36.629",
       "progress": 0,
-      "config": {},
+      "config": {
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "results": {},
+        "enabled": true
+      },
       "settings": {
         "params": {},
         "forms": {}
@@ -2589,7 +2681,5 @@
   "config": {
     "isZeppelinNotebookCronEnable": false
   },
-  "info": {
-    "isRunning": false
-  }
+  "info": {}
 }
