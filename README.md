@@ -15,7 +15,7 @@ This repository contains Apache Zeppelin 0.9.0 docker image, which is tuned to w
 
 To clone this Github repository:
 
-    git clone https://github.com/abdoKinch/big-data-docker.git
+    git clone https://github.com/chantirwadie/spark-project.git
 
 Pour créer les conteneurs et les exécuter :
 
@@ -83,7 +83,7 @@ docker cp fichier.csv 'identifiant du conteneur':/fichier.csv
 
 EXEMPLE
 
- %pyspark
+%pyspark
 import time
 from pyspark import SparkContext,SparkConf
 from pyspark.sql import SparkSession
